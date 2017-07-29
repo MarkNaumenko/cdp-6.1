@@ -12,9 +12,9 @@ class protractorPo extends protractorSuperPo{
         this.addressSelectorFrankie = element(by.css(`div[data-ng-model='selectedAddress'] option[label*='Frankie']`));
         this.carRegNumber = element(by.css(`input[id='regnumber']`));
         this.findCarButton = element(by.css(`button[data-ng-model='carLookupButton']`));
-        this.dayOfBirth = element(by.css(`[data-ng-model='day']`));
-        this.monthOfBirth = element(by.css(`[data-ng-model='month']`));
-        this.yearOfBirth = element(by.css(`[data-ng-model='year']`));
+        this.dayOfBirth = element(by.css(`.smart-date-field [data-ng-model='day']`));
+        this.monthOfBirth = element(by.css(`.smart-date-field [data-ng-model='month']`));
+        this.yearOfBirth = element(by.css(`.smart-date-field [data-ng-model='year']`));
         this.howLongHeldLicenceYear3 = element(by.css(this.getOptionLabel(`div[class*='year-month-selector__year-select']`, 3)));
         this.howLongHeldLicenceMonths5 = element(by.css(this.getOptionLabel(`div[class*='year-month-selector__month-select']`, 5)));
         this.medicalConditionsFalse =

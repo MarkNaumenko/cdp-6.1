@@ -3,130 +3,90 @@
  */
 'use strict';
 
-const po = require('./protractorPo.js'),
-    po2 = require('./protractorPo2'),
-    superP = require('./protractorSuperPo'),
-    page1 = new po(),
-    page2 = new po2(),
-    superPage = new superP(),
-    EC = protractor.ExpectedConditions;
+const PageFactory = function (page) {
+    const pages = {
+        'page1': po,
+        'page2': po2,
+        'superPage': superP
+    };
+    if (!pages[page]) {
+        throw new Error('Wrong page name: ' + pages[page]);
+    }
+    return new pages[page]();
+};
+
+const po = require('./page_objects/protractorPo.js'),
+    po2 = require('./page_objects/protractorPo2'),
+    superP = require('./page_objects/protractorSuperPo'),
+    page1 = PageFactory('page1'),
+    page2 = PageFactory('page2'),
+    superPage = PageFactory('superPage');
 let page;
 
-describe('CDP Home Task - Protractor Framework Usage',() => {
+describe('CDP Home Task - Protractor Framework Usage', () => {
 
     beforeAll(() => {
-        browser.get('http://www.ci1-cms.gb.moneysupermarket.com/car-insurance/');
-    });
-
-    afterAll(() => {
-        // browser.navigate().refresh();
+        browser.get('https://www.sit1.gb.moneysupermarket.com/car-insurance/');
     });
 
     beforeEach(() => {
-        return  browser.getCurrentUrl().then((url) => {
+        return browser.getCurrentUrl().then((url) => {
             if (url.includes('high')) {
-                console.log('high');
+                loggerHelper.warning('All right, we are on the High Impact Page');
                 return page = page1;
             }
             if (url.includes('about')) {
-                console.log('about');
+                loggerHelper.warning('All right, we are on the About The Car Page');
                 return page = page2;
             }
             else {
-                console.log('other');
+                loggerHelper.warning('All right, we are on the other page');
                 return page = superPage;
             }
         });
     });
 
-    afterEach(() => {
-        //switching logic depends on page
-        return browser.getCurrentUrl().then((url) => {
-           if (url.includes('high')) {
-               return page2.continue.click();
-           }
-        });
+    it('Open new tab', () => {
+        elementHelper.ctrlClick(page.getBrandNewQuote);
+        elementHelper.switchToTheTab(1);
     });
 
-    xit('Open new tab', () => {
-        browser.actions()
-        .keyDown(protractor.Key.CONTROL)
-        .click(page.getBrandNewQuote)
-        .keyUp(protractor.Key.CONTROL)
-        .perform();
-
-        return browser.getAllWindowHandles().then((windowsId) => {
-            return windowsId[1];
-        }).then((tabId) => {
-            return browser.switchTo().window(tabId);
-        });
+    it('Let`s go to the MoneySuperMarket and try to get car insurance, just try :D', () => {
+        elementHelper.click(page.knownRegnumberfalse);
+        elementHelper.click(page.mark);
+        elementHelper.click(page.otherModel);
+        elementHelper.click(page.model328);
+        elementHelper.click(page.manualTransmission);
+        elementHelper.click(page.year1997);
+        elementHelper.click(page.bodyTypeCoupe);
+        elementHelper.sendKeys(page.postcode, 'BB11BB');
+        elementHelper.click(page.findCar);
     });
 
-    xit('Let`s go to the MoneySuperMarket and try to get car insurance, just try :D', () => {
-        page.knownRegnumberfalse.click();
-        page.mark.click();
-        page.otherModel.click();
-        page.model328.click();
-        page.manualTransmission.click();
-        page.year1997.click();
-        page.bodyTypeCoupe.click();
-        page.postcode.sendKeys('BB11BB');
-        page.findCar.click();
-    });
-
-    xit('Something else', () => {
-        browser.ignoreSynchronization = true; //may be used for non angular apps
-        browser.sleep(1000);
-        browser.ignoreSynchronization = false;
-
-        browser.wait(EC.invisibilityOf(page.findCar), 10000);
-        expect(page.postcode.getAttribute('value')).toEqual('BB11BB');
+    it('Something else', () => {
+        elementHelper.waitForInvisibility(page.findCar, 10000);
+        elementHelper.expectValueToEqual(page.postcode, 'BB11BB');
     });
 
     it('Mandatory fields filling on the LandingPage', () => {
-        browser.executeScript('window.scrollTo(0, 100)');
-        page.getBrandNewQuote.click();
+        elementHelper.refresh();
+        elementHelper.navigate('back');
+        elementHelper.scrollTo(0, 100);
     });
 
     it('Mandatory fields filling on the HighImpactPage', () => {
-       page.postcode.sendKeys('BB1 1BB');
-       page.carRegNumber.sendKeys('MF15MYC');
-       page.addressSelectorFrankie.click();
-       page.findCarButton.click();
-       page.dayOfBirth.sendKeys('01');
-       page.monthOfBirth.sendKeys('01');
-       page.yearOfBirth.sendKeys('1980');
-       page.howLongHeldLicenceYear3.click();
-       page.howLongHeldLicenceMonths5.click();
-       page.medicalConditionsFalse.click();
-       page.drivingOtherCarsFalse.click();
-       page.hadOffencesNo.click();
-       page.yearsNoClaimsDiscount2.click();
-       page.policyStartDateTomorrow.click();
-    });
+        elementHelper.sendKeys(page.dayOfBirth, '01');
+        elementHelper.sendKeys(page.monthOfBirth, '01');
+        elementHelper.sendKeys(page.yearOfBirth, '1980');
+        elementHelper.click(page.howLongHeldLicenceYear3);
+        elementHelper.click(page.howLongHeldLicenceMonths5);
+        elementHelper.click(page.medicalConditionsFalse);
+        elementHelper.click(page.drivingOtherCarsFalse);
+        elementHelper.click(page.hadOffencesNo);
 
-    it('Mandatory fields filling on the AboutTheCarPage', () => {
-        page.startDrivingCarMonth.click();
-        page.startDrivingCarYear.click();
-        page.areYouRegisteredKeeper.click();
-        page.milesPerYear.sendKeys(8000);
-        page.overnightLocation.click();
-        page.daytimeLocation.click();
-        page.policyHolderName.sendKeys("test");
-        page.policyHolderSurname.sendKeys("tester");
-        // page2.emailField.sendKeys("GENERATE");
-        // page2.confirmEmail.sendKeys("GENERATE");
-        // page2.passwordField.sendKeys("GENERATE");
-        // page2.confirmPassword.sendKeys("GENERATE");
-        // page.gender.click();
-        // page.maritalStatus.click();
-        // page.hasChildrenUnder16.click();
-        // page.homeOwner.click();
-        // page.occupationField.sendKeys("Xe");
-        // page.businessSectorField.sendKeys("Ed");
-        // page.rememberForNinetyDays.click();
-        // page.twoCompanyCallMe.click();
-        // browser.sleep(10000);
+        //highlighting the element with red frame
+        elementHelper.highlightTheElement(page.hadOffencesNo);
+        elementHelper.takeScreenshot('screenshot.png');
     });
 
 });

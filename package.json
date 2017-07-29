@@ -15,7 +15,9 @@
     "geckodriver": "^1.6.1",
     "gulp": "^3.9.1",
     "gulp-protractor": "^4.1.0",
+    "log4js": "^2.3.3",
     "protractor": "^5.1.2",
+    "protractor-jasmine2-screenshot-reporter": "^0.4.0",
     "run-sequence": "^2.1.0",
     "selenium-webdriver": "^3.4.0"
   }

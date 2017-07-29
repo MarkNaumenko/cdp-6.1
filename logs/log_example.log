@@ -1,0 +1,41 @@
+[2017-08-29 13:47:09.255] [INFO] -CDP_:D- - => it: Open new tab
+[2017-08-29 13:47:09.707] [WARN] -CDP_:D- - All right, we are on the other page
+[2017-08-29 13:47:09.723] [DEBUG] -CDP_:D- - Ctrl + Clicking on the element: By(css selector, a.fancy-button--purple[data-ng-href*="new-journey"]:nth-child(2))
+[2017-08-29 13:47:09.876] [DEBUG] -CDP_:D- - Switching to the tab number: 1
+[2017-08-29 13:47:12.491] [INFO] -CDP_:D- - => it passed
+[2017-08-29 13:47:12.492] [INFO] -CDP_:D- - => it: Let`s go to the MoneySuperMarket and try to get car insurance, just try :D
+[2017-08-29 13:47:12.519] [WARN] -CDP_:D- - All right, we are on the High Impact Page
+[2017-08-29 13:47:12.534] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, [for="knownRegnumberfalse"])
+[2017-08-29 13:47:12.712] [DEBUG] -CDP_:D- - Clicking on the element: By(xpath, .//*[@for="make4"])
+[2017-08-29 13:47:13.282] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, [for="modelOther"])
+[2017-08-29 13:47:13.767] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, option[label="328"])
+[2017-08-29 13:47:13.917] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, [for="transmission0"])
+[2017-08-29 13:47:15.571] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, option[label="1997 (P, R)"])
+[2017-08-29 13:47:15.666] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, option[label="I COUPE"])
+[2017-08-29 13:47:16.062] [DEBUG] -CDP_:D- - Sending keys: 'BB11BB', to the text input: By(css selector, input[id="postcode"])
+[2017-08-29 13:47:16.452] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, button[id="findCar"])
+[2017-08-29 13:47:16.984] [INFO] -CDP_:D- - => it passed
+[2017-08-29 13:47:16.984] [INFO] -CDP_:D- - => it: Something else
+[2017-08-29 13:47:17.109] [WARN] -CDP_:D- - All right, we are on the High Impact Page
+[2017-08-29 13:47:17.115] [DEBUG] -CDP_:D- - Waiting for the element: 'By(css selector, button[id="findCar"])', become invisible in: 10000
+[2017-08-29 13:47:17.149] [DEBUG] -CDP_:D- - Expecting the BB11BB value of the By(css selector, input[id="postcode"]) element
+[2017-08-29 13:47:17.555] [INFO] -CDP_:D- - => it passed
+[2017-08-29 13:47:17.555] [INFO] -CDP_:D- - => it: Mandatory fields filling on the LandingPage
+[2017-08-29 13:47:17.575] [WARN] -CDP_:D- - All right, we are on the High Impact Page
+[2017-08-29 13:47:17.579] [DEBUG] -CDP_:D- - Refreshing the page
+[2017-08-29 13:47:19.591] [DEBUG] -CDP_:D- - Navigating browser back
+[2017-08-29 13:47:24.207] [DEBUG] -CDP_:D- - Scrolling the page to the 0 left and 100 top
+[2017-08-29 13:47:24.598] [INFO] -CDP_:D- - => it passed
+[2017-08-29 13:47:24.598] [INFO] -CDP_:D- - => it: Mandatory fields filling on the HighImpactPage
+[2017-08-29 13:47:24.622] [WARN] -CDP_:D- - All right, we are on the High Impact Page
+[2017-08-29 13:47:24.639] [DEBUG] -CDP_:D- - Sending keys: '01', to the text input: By(css selector, .smart-date-field [data-ng-model='day'])
+[2017-08-29 13:47:24.791] [DEBUG] -CDP_:D- - Sending keys: '01', to the text input: By(css selector, .smart-date-field [data-ng-model='month'])
+[2017-08-29 13:47:25.217] [DEBUG] -CDP_:D- - Sending keys: '1980', to the text input: By(css selector, .smart-date-field [data-ng-model='year'])
+[2017-08-29 13:47:25.336] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, div[class*='year-month-selector__year-select'] option[label='3'])
+[2017-08-29 13:47:25.757] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, div[class*='year-month-selector__month-select'] option[label='5'])
+[2017-08-29 13:47:26.169] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, div[data-name='policyHolder.hasMedicalConditionsAffectingDriving'] label[for*='false'])
+[2017-08-29 13:47:26.607] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, [id='policyHolder.drivesAnyOtherCars'] label[for="policyHolder.drivesAnyOtherCarsfalse"])
+[2017-08-29 13:47:27.048] [DEBUG] -CDP_:D- - Clicking on the element: By(css selector, div[id='policyHolder.offencesExists'] button[data-ng-click*=toggleNo])
+[2017-08-29 13:47:27.463] [DEBUG] -CDP_:D- - Highlighting the By(css selector, div[id='policyHolder.offencesExists'] button[data-ng-click*=toggleNo]) element
+[2017-08-29 13:47:27.808] [DEBUG] -CDP_:D- - Taking the screenshot.png screenshot
+[2017-08-29 13:47:28.501] [INFO] -CDP_:D- - => it passed
